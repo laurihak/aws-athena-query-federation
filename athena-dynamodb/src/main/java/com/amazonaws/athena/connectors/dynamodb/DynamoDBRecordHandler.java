@@ -296,7 +296,6 @@ public class DynamoDBRecordHandler
                 Iterator<Map<String, AttributeValue>> iterator;
                 try {
                     if (request instanceof QueryRequest) {
-                        System.out.print("request-debug" + request);
                         QueryRequest paginatedRequest = ((QueryRequest) request).withExclusiveStartKey(lastKeyEvaluated.get());
                         logger.info("Invoking DDB with Query request: {}", request);
                         QueryResult queryResult = invokerCache.get(tableName).invoke(() -> ddbClient.query(paginatedRequest));
